@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Book</title>
+</head>
+
+<body>
+<div class="container 3">
+    <h3>Edit Book</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/books/update/{id}(id=${book.id})}" th:object="${book}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="author" class="col-form-label">Author</label> <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Author">
+                            <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="release" class="col-form-label">Release</label>
+                            <input type="text" th:field="*{release}" class="form-control" id="release" placeholder="Release">
+                            <span th:if="${#fields.hasErrors('release')}" th:errors="*{release}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="isPrivateCatalog">Private</label>
+                            <input type="checkbox" id="isPrivateCatalog" name="isPrivateCatalog" th:field=*{privateCatalog} th:value="${book}">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Update Book">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
