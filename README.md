@@ -5,4 +5,6 @@
 Пример web-crud приложения с поднятием его, а так же базы даных PostgreSQL в docker-контейнерах
 
 Установка:
-сначала создаем образ с помощью Dockerfile, затем запускаем docker-compose.yaml
+1) собираем проект с помощью build gradle
+2) сначала создаем образ с помощью Dockerfile
+3) затем запускаем docker-compose.yaml
