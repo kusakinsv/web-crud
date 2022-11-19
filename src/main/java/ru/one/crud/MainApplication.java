@@ -12,6 +12,7 @@ public class MainApplication {
 		ApplicationContext context = SpringApplication.run(MainApplication.class, args);
 		BrowserLauncher launcher = context.getBean(BrowserLauncher.class);
 		launcher.start();
+
 	}
 
 
