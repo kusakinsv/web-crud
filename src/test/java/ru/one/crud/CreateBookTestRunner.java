@@ -23,6 +23,6 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.UNDERSCORE
 //        name = "^Успешное|Успешная.*"
 )
-public class CreateBookTestConfig extends StarterTest {
+public class CreateBookTestRunner extends StarterTest {
 
 }
