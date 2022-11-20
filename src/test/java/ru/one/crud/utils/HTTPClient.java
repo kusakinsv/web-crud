@@ -1,4 +1,4 @@
-package ru.one.crud;
+package ru.one.crud.utils;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;

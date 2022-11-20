@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.HttpServerErrorException;
 import ru.one.crud.entity.Book;
 import ru.one.crud.repository.BookRepository;
+import ru.one.crud.utils.HTTPClient;
+import ru.one.crud.utils.TestUtilityClass;
 
 import java.util.NoSuchElementException;
 

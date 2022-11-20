@@ -1,4 +1,4 @@
-package ru.one.crud;
+package ru.one.crud.utils;
 
 import ru.one.crud.entity.Book;
 

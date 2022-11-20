@@ -3,14 +3,13 @@ package ru.one.crud;
 import io.cucumber.java.ru.Допустим;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.То;
-import jdk.jshell.execution.Util;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import ru.one.crud.entity.Book;
 import ru.one.crud.repository.BookRepository;
+import ru.one.crud.utils.HTTPClient;
+import ru.one.crud.utils.TestUtilityClass;
 
 public class UpdateBookTest {
     @Autowired

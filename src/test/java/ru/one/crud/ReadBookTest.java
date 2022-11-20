@@ -6,12 +6,11 @@ import io.cucumber.java.ru.То;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import ru.one.crud.entity.Book;
 import ru.one.crud.repository.BookRepository;
-
-import java.util.NoSuchElementException;
+import ru.one.crud.utils.HTTPClient;
+import ru.one.crud.utils.TestUtilityClass;
 
 public class ReadBookTest {
     @Autowired
