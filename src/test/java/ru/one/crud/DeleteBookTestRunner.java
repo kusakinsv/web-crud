@@ -1,8 +1,5 @@
 package ru.one.crud;
 
-import io.cucumber.java.ru.Допустим;
-import io.cucumber.java.ru.Если;
-import io.cucumber.java.ru.То;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -11,10 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "ru.one.crud",
-        tags = "@update",
+        tags = "@delete",
         dryRun = false,
         snippets = CucumberOptions.SnippetType.UNDERSCORE
 )
-public class UpdateBookTestRunner extends StarterTest {
+public class DeleteBookTestRunner extends StarterTest {
 
 }

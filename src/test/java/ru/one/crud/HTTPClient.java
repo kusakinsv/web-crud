@@ -28,4 +28,24 @@ public class HTTPClient {
         System.out.println(responseOutput.getBody());
         return responseOutput;
     }
+
+    public ResponseEntity<Book> requestUpdate(Book book){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Book> requestEntity = new HttpEntity<>(book, httpHeaders);
+        ResponseEntity<Book> responseOutput = restTemplate.exchange(URL + "/update/" + book.getId(), HttpMethod.POST, requestEntity, Book.class);
+        System.out.println(responseOutput.getBody());
+        return responseOutput;
+    }
+
+    public ResponseEntity<Book> requestDelete(Book book){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Book> requestEntity = new HttpEntity<>(book, httpHeaders);
+        ResponseEntity<Book> responseOutput = restTemplate.exchange(URL + "/delete/" + book.getId(), HttpMethod.POST, requestEntity, Book.class);
+        System.out.println(responseOutput.getBody());
+        return responseOutput;
+    }
 }
