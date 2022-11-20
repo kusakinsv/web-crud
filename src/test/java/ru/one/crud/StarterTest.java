@@ -16,9 +16,5 @@ import org.springframework.test.context.ContextConfiguration;
 )
 @ContextConfiguration(classes = TestConfig.class)
 public class StarterTest {
-//    public HTTPClient httpClient = new HTTPClient();
-//
-//    @Autowired
-//    protected TestRestTemplate testRestTemplate;
 
 }

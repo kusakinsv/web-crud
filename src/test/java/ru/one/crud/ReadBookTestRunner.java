@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "ru.one.crud",
-        tags = "@create",
+        tags = "@read",
         dryRun = false,
         snippets = CucumberOptions.SnippetType.UNDERSCORE
 )
-public class CreateBookTestRunner extends StarterTest {
+public class ReadBookTestRunner extends StarterTest {
 
 }

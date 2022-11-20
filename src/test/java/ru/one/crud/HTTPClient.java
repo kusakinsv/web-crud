@@ -9,13 +9,12 @@ public class HTTPClient {
 
     private final String URL = "http://localhost:8282/api/books";
 
-    public ResponseEntity requestRead(){
+    public ResponseEntity<Book> requestRead(long id){
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity requestEntity = new HttpEntity<>(null, httpHeaders);
-        ResponseEntity<String> responseOutput = restTemplate.exchange(URL + "/read", HttpMethod.GET, requestEntity, String.class);
-        System.out.println(responseOutput.getBody());
+        ResponseEntity<Book> responseOutput = restTemplate.exchange(URL + "/read/" + id, HttpMethod.GET, requestEntity, Book.class);
         return responseOutput;
 
     }
@@ -29,8 +28,4 @@ public class HTTPClient {
         System.out.println(responseOutput.getBody());
         return responseOutput;
     }
-
-
-
-
 }

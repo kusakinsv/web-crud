@@ -10,17 +10,12 @@ import org.springframework.web.client.HttpClientErrorException;
 import ru.one.crud.entity.Book;
 import ru.one.crud.repository.BookRepository;
 
-
 public class CreateBookTest {
     @Autowired
     HTTPClient httpClient;
-    @Autowired
-    BookRepository bookRepository;
 
-//    @Допустим("пользователь передает данные для создания книги")
-//    public void пользователь_передает_данные_для_создания_книги() {
-//        ResponseEntity<Book> book = httpClient.request();
-//    }
+    @Autowired
+    private BookRepository bookRepository;
 
     @Допустим("пользователь передает данные для создания книги")
     public void пользователь_передает_данные_для_создания_книги() {
@@ -32,9 +27,11 @@ public class CreateBookTest {
 
     @То("программа вернула созданный объект")
     public void программа_вернула_созданный_объект() {
-        ResponseEntity<Book> bookResponseEntity = httpClient.requestCreate(createTestBook());
+        ResponseEntity<Book> bookResponseEntity = httpClient.requestCreate(TestUtilityClass.createTestBook());
         Book book = bookResponseEntity.getBody();
         assert book != null;
+        //try-catch
+        TestUtilityClass.setTestId(book.getId());
         Assertions.assertEquals("Тестовая книга", book.getName());
         Assertions.assertEquals("Тестовый автор", book.getAuthor());
         Assertions.assertEquals("2022", book.getRelease());
@@ -52,14 +49,7 @@ public class CreateBookTest {
                         () -> httpClient.requestCreate(null));
     }
 
-
-    public Book createTestBook() {
-        Book book = new Book();
-        book.setName("Тестовая книга");
-        book.setAuthor("Тестовый автор");
-        book.setRelease("2022");
-        book.setPrivateCatalog(true);
-        return book;
+    private void deleteTestBook(Book book){
+        bookRepository.delete(book);
     }
-
 }
