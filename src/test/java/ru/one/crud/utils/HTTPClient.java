@@ -1,13 +1,14 @@
 package ru.one.crud.utils;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import ru.one.crud.entity.Book;
 
 
 public class HTTPClient {
-
-    private final String URL = "http://localhost:8282/api/books";
+    @Value("${server.api.url}")
+    private String URL;
 
     public ResponseEntity<Book> requestRead(long id){
         RestTemplate restTemplate = new RestTemplate();
