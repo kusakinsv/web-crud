@@ -32,7 +32,6 @@ public class CreateBookTest {
         ResponseEntity<Book> bookResponseEntity = httpClient.requestCreate(TestUtilityClass.createTestBook());
         Book book = bookResponseEntity.getBody();
         assert book != null;
-        //try-catch
         TestUtilityClass.setTestId(book.getId());
         Assertions.assertEquals("Тестовая книга", book.getName());
         Assertions.assertEquals("Тестовый автор", book.getAuthor());
