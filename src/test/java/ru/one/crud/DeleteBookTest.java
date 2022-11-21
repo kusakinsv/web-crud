@@ -20,7 +20,7 @@ public class DeleteBookTest {
     @Autowired
     private BookRepository bookRepository;
 
-    @Допустим("Удаляем книгу")
+    @Допустим("пользователь передает данные для удаления книги")
     public void пользователь_обновляет_данные_книги() {
 
     }

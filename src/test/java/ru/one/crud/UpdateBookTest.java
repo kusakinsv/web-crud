@@ -41,6 +41,7 @@ public class UpdateBookTest {
         Assertions.assertEquals(book.getAuthor(), bookFromHttpClient.getAuthor());
         Assertions.assertEquals(book.getRelease(), bookFromHttpClient.getRelease());
         Assertions.assertEquals(book.isPrivateCatalog(), bookFromHttpClient.isPrivateCatalog());
+        bookRepository.delete(bookFromHttpClient);
     }
 
     @Если("пользователь передал не существующий id")

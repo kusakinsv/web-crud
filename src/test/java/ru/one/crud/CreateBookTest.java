@@ -38,6 +38,7 @@ public class CreateBookTest {
         Assertions.assertEquals("Тестовый автор", book.getAuthor());
         Assertions.assertEquals("2022", book.getRelease());
         Assertions.assertTrue(book.isPrivateCatalog());
+        bookRepository.delete(book);
     }
 
     @Если("пользователь передал некорректные данные")
