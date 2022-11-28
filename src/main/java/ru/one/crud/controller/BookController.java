@@ -20,7 +20,6 @@ public class BookController {
         return "index";
     }
 
-
     @GetMapping("listAll")
     public String listAll(Model model) {
         model.addAttribute("books", bookRepository.findAll());

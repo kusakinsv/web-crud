@@ -40,8 +40,6 @@
                                 <td th:text="${book.getCatalog}"></td>
                                 <td><a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary">EDIT</a></td>
                                 <td><a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-primary">DELETE</a></td>
-<!--                                <td><a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary"><i class="bookbtn">EDIT</i></a></td>-->
-<!--                                <td><a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-primary"><i class="bookbtn">DELETE</i></a></td>-->
                             </tr>
                             </tbody>
                         </table>
