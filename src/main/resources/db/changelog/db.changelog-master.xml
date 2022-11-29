@@ -86,4 +86,17 @@
     <changeSet id="create_hibernate_sequence" author="Sergei" dbms="postgresql">
         <createSequence sequenceName="hibernate_sequence" startValue="9" incrementBy="1"/>
     </changeSet>
+    <changeSet id="create_table_incoming_order" author="Sergei" dbms="postgresql">
+        <createTable tableName="incoming_order">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="converted_order" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="recivied_order" type="bytea">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -14,7 +14,6 @@ services:
     ports:
       - "5400:5432"
     volumes:
-      - ./dbscripts:/docker-entrypoint-initdb.d
       - /var/lib/postgresql/data
     networks:
       - crud
@@ -22,9 +21,16 @@ services:
   web-crud-app:
     image: web-crud-image
     container_name: "web-crud-app"
-    # restart: always
     ports:
       - "8282:8282"
+    networks:
+      - crud
+
+  web-crud-converter:
+    image: tlv-converter
+    container_name: "web-crud-converter"
+    ports:
+      - "8280:8280"
     networks:
       - crud
 
