@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="create_table_book" author="Sergei">
+        <!-- Прописываем создание таблицы genre-->
+        <createTable tableName="book">
+            <!--Создаем поля -->
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="author" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="release" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="private_catalog" type="bool">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="insert_into_book" author="Sergei">
+        <insert tableName="book">
+            <column name="id" value="1"/>
+            <column name="name" value="Капитанская дочка"/>
+            <column name="author" value="А. С. Пушкин"/>
+            <column name="release" value="1836"/>
+            <column name="private_catalog" value="false"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="2"/>
+            <column name="name" value="Дубровский"/>
+            <column name="author" value="А. С. Пушкин"/>
+            <column name="release" value="1841"/>
+            <column name="private_catalog" value="false"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="3"/>
+            <column name="name" value="Сто лет одиночества"/>
+            <column name="author" value="Габриэль Гарсия Маркес"/>
+            <column name="release" value="1982"/>
+            <column name="private_catalog" value="true"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="4"/>
+            <column name="name" value="Алые Паруса"/>
+            <column name="author" value="А. Грин"/>
+            <column name="release" value="1923"/>
+            <column name="private_catalog" value="true"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="5"/>
+            <column name="name" value="Java. Полное руководство"/>
+            <column name="author" value="Герберт Шилдт"/>
+            <column name="release" value="2018"/>
+            <column name="private_catalog" value="true"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="6"/>
+            <column name="name" value="Java. Справочник разработчика"/>
+            <column name="author" value="Бенджамин Дж. Эванс"/>
+            <column name="release" value="2019"/>
+            <column name="private_catalog" value="true"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="7"/>
+            <column name="name" value="Философия Java Java"/>
+            <column name="author" value="Брюс Эккель"/>
+            <column name="release" value="2015"/>
+            <column name="private_catalog" value="false"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="8"/>
+            <column name="name" value="Spring в действии 6"/>
+            <column name="author" value="Крейг Уоллс"/>
+            <column name="release" value="2022"/>
+            <column name="private_catalog" value="true"/>
+        </insert>
+    </changeSet>
+    <changeSet id="create_hibernate_sequence" author="Sergei" dbms="postgresql">
+        <createSequence sequenceName="hibernate_sequence" startValue="9" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

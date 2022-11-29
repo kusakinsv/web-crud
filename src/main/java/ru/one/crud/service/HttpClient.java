@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.InputStreamSource;
+import org.springframework.core.io.WritableResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -31,46 +32,20 @@ public class HttpClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    public ResponseEntity<?> requestOrder(MultipartFile file) throws IOException {
-        System.out.println("Файл принят");
+    public ResponseEntity<JsonNode> requestOrder(MultipartFile file) throws IOException {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
-//        byte[] bytes = file.getBytes();
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(file.getBytes());
-        InputStreamSource s = new InputStreamResource(inputStream);
-//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//        byteArrayOutputStream.writeBytes(file.getBytes());
-        File outputFile = File.createTempFile(UUID.randomUUID().toString(), ".bin");
+        File outputFile = File.createTempFile(UUID.randomUUID().toString(), ".tmp");
         try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
             outputStream.write(file.getBytes());
         }
-
-//        File file1 = outputFile;
-//        FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(file1.toPath()), false, file.getName(), (int) file1.length(), file1.getParentFile());
-//        try {
-//
-//             IOUtils.copy(new FileInputStream(file1), fileItem.getOutputStream());
-//        } catch (IOException ex) {
-//            // do something.
-//        }
-//        MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
-//        OctetStreamData octetStreamData = new OctetStreamData(inputStream);
-
-//        File tempfile = File.createTempFile(UUID.randomUUID().toString(), ".tmp");
         FileSystemResource resource = new FileSystemResource(outputFile);
-
         MultiValueMap<String, Object> multiPartRequest = new LinkedMultiValueMap<>() {{
             add("file", resource);
         }};
-//        HttpEntity<MultipartFile> requestEntity = new HttpEntity<>(file, httpHeaders);
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(multiPartRequest, httpHeaders);
-
-        url = "http://localhost:8280/api/convert";
-        System.out.println(url);
-//        ResponseEntity<?> responseOutput = restTemplate.exchange(url + "/api/convert", HttpMethod.POST, requestEntity, JsonNode.class);
-        ResponseEntity<?> responseOutput = restTemplate.postForEntity(url, requestEntity, String.class);
-        System.out.println(responseOutput);
-        System.out.println("Отправлено");
+        ResponseEntity<JsonNode> responseOutput = restTemplate.postForEntity(url + "/api/convert", requestEntity, JsonNode.class);
+        outputFile.delete();
         return responseOutput;
 
     }
