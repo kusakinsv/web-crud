@@ -26,14 +26,6 @@ services:
     networks:
       - crud
 
-  web-crud-converter:
-    image: tlv-converter
-    container_name: "web-crud-converter"
-    ports:
-      - "8280:8280"
-    networks:
-      - crud
-
 networks:
   crud:
    driver: bridge
