@@ -9,9 +9,4 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan("ru.one.crud")
 public class AppConfiguration {
 
-    @Bean
-    RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
-
 }
