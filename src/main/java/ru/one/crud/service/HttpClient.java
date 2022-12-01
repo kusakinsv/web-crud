@@ -1,27 +1,22 @@
 package ru.one.crud.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.InputStreamSource;
-import org.springframework.core.io.WritableResource;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import ru.one.crud.entity.Book;
 
-import javax.xml.crypto.OctetStreamData;
-import java.io.*;
-import java.nio.file.Files;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.UUID;
 
 @Component

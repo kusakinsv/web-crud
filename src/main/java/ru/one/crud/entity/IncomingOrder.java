@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -16,10 +17,4 @@ public class IncomingOrder {
     private byte[] reciviedOrder;
 
     private String convertedOrder;
-
-
-
-
-
-
 }
