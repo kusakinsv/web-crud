@@ -40,5 +40,5 @@ GET  /readAllPublic
 
 #### Установка:
 1) собираем проект с помощью build gradle
-2) сначала создаем образ с помощью Dockerfile
-3) затем запускаем docker-compose.yaml
+2) создаем образ с помощью Dockerfile
+3) запускаем docker-compose.yaml
